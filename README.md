@@ -1,59 +1,73 @@
-# Examino
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+# Examino – Interaktive Klausurvorbereitung mit Gamification
 
-## Development server
+Examino ist eine moderne Web-App, mit der du dich gezielt, motiviert und spielerisch auf deine Klausuren vorbereiten kannst. Wähle Themengebiete, Testdauer und Schwierigkeitsgrad, beantworte Fragen im Prüfungsmodus und sammle Erfolge. Die Anwendung bietet Statistiken, Levelsystem und zahlreiche Gamification-Elemente, um das Lernen effektiv und unterhaltsam zu gestalten.
 
-To start a local development server, run:
+## 🚀 Features
+
+- Themenauswahl und flexibler Prüfungsmodus
+- Fortschrittsanzeige, Levelsystem und Erfahrungspunkte (XP)
+- 19 Achievements (Erfolge) für besondere Leistungen
+- Streak-System für tägliche Motivation
+- Übersichtliche Statistiken und Auswertungen
+- Animierte XP- und Achievement-Anzeigen
+- Persistenz aller Daten im Browser (localStorage)
+- Moderne, responsive Benutzeroberfläche
+
+## 🎮 Gamification-System (Kurzüberblick)
+
+- **Level-System:** XP für richtige Antworten, Bonus für hohe Scores und Geschwindigkeit, Levelaufstieg nach Formel
+- **Achievements:** 19 Erfolge für Tests, Geschwindigkeit, Streaks, Level, Kategorien und Perfektion
+- **Streaks:** Belohnung für tägliches Üben ohne Unterbrechung
+- **Statistiken:** Fortschritt, Scores, Streaks, XP, Tests pro Kategorie u.v.m.
+
+Weitere Details findest du in [GAMIFICATION.md](GAMIFICATION.md).
+
+## 🛠️ Entwicklung & Nutzung
+
+### Entwicklung starten
 
 ```bash
 ng serve
 ```
+Öffne dann [http://localhost:4200/](http://localhost:4200/) im Browser. Die App lädt automatisch neu bei Änderungen.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Komponenten generieren
 
 ```bash
 ng generate component component-name
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+Weitere Schematics findest du mit:
 ```bash
 ng generate --help
 ```
 
-## Building
-
-To build the project run:
+### Build für Produktion
 
 ```bash
 ng build
 ```
+Das Build landet im `dist/`-Verzeichnis und ist für Performance optimiert.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Unit-Tests ausführen
 
 ```bash
 ng test
 ```
+Verwendet [Vitest](https://vitest.dev/) als Test Runner.
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### End-to-End-Tests
 
 ```bash
 ng e2e
 ```
+Ein E2E-Framework kann nach Bedarf ergänzt werden.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## ℹ️ Weitere Ressourcen
 
-## Additional Resources
+- [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli)
+- [GAMIFICATION.md](GAMIFICATION.md) – Details zum Gamification-System
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+**Ideal für Studierende, die sich gezielt und motiviert auf Prüfungen vorbereiten möchten!**

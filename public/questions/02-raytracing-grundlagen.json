@@ -1,0 +1,74 @@
+[
+  {
+    "id": "rt-1",
+    "category": "Raytracing Grundlagen",
+    "question": "Warum verfolgen wir beim Raytracing Strahlen 'rückwärts' vom Auge aus?",
+    "options": [
+      { "id": "a", "text": "Weil nur ein Bruchteil der Lichtstrahlen das Auge erreicht" },
+      { "id": "b", "text": "Weil die Physik rückwärts funktioniert" },
+      { "id": "c", "text": "Weil die Kamera die Lichtquelle ist" },
+      { "id": "d", "text": "Weil Reflexionen sonst nicht berechnet werden können" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "rt-2",
+    "category": "Raytracing Grundlagen",
+    "question": "Welche Wechselwirkungen zwischen Licht und Oberfläche gibt es?",
+    "options": [
+      { "id": "a", "text": "Absorption, Reflexion, Refraktion" },
+      { "id": "b", "text": "Emission, Transmission, Absorption" },
+      { "id": "c", "text": "Diffusion, Spiegelung, Brechung" },
+      { "id": "d", "text": "Streuung, Beugung, Interferenz" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "rt-3",
+    "category": "Raytracing Grundlagen",
+    "question": "Was ist der grundlegende Algorithmus des Raytracings?",
+    "options": [
+      { "id": "a", "text": "Strahl durch Pixel → Schnittpunkt finden → Farbe berechnen" },
+      { "id": "b", "text": "Objekt zeichnen → Pixel färben → Schatten berechnen" },
+      { "id": "c", "text": "Licht aussenden → Oberfläche treffen → Kamera erreichen" },
+      { "id": "d", "text": "Szene rastern → Tiefe berechnen → Farbe interpolieren" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "rt-4",
+    "category": "Raytracing Grundlagen",
+    "question": "Was bedeutet 'Verdeckung' beim Raytracing?",
+    "options": [
+      { "id": "a", "text": "Ein Objekt verdeckt ein anderes vom Betrachter aus gesehen" },
+      { "id": "b", "text": "Schatten auf einer Oberfläche" },
+      { "id": "c", "text": "Reflexionen werden blockiert" },
+      { "id": "d", "text": "Licht kann nicht durch Objekte dringen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "rt-5",
+    "category": "Raytracing Grundlagen",
+    "question": "Was ist ein Ray (Strahl) im Raytracing?",
+    "options": [
+      { "id": "a", "text": "Eine Halbgerade mit Ursprung und Richtung" },
+      { "id": "b", "text": "Eine Linie zwischen zwei Punkten" },
+      { "id": "c", "text": "Ein Vektor mit Länge 1" },
+      { "id": "d", "text": "Ein Lichtstrahl von der Lichtquelle" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "rt-6",
+    "category": "Raytracing Grundlagen",
+    "question": "Was ist das Hauptziel des Raytracings?",
+    "options": [
+      { "id": "a", "text": "Fotorealistische Bilder durch physikalisch korrekte Lichtberechnung" },
+      { "id": "b", "text": "Schnelle Darstellung von 3D-Szenen" },
+      { "id": "c", "text": "Echtzeit-Rendering für Spiele" },
+      { "id": "d", "text": "Vereinfachte Darstellung komplexer Szenen" }
+    ],
+    "correctAnswer": "a"
+  }
+]

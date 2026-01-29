@@ -1,0 +1,74 @@
+[
+  {
+    "id": "aa-1",
+    "category": "Anti-Aliasing & Rekursion",
+    "question": "Was ist der Alias-Effekt?",
+    "options": [
+      { "id": "a", "text": "Treppenstufen-Artefakte durch zu grobe Abtastung" },
+      { "id": "b", "text": "Unscharfe Kanten" },
+      { "id": "c", "text": "Falsche Farben" },
+      { "id": "d", "text": "Zu dunkle Bilder" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "aa-2",
+    "category": "Anti-Aliasing & Rekursion",
+    "question": "Was ist Supersampling?",
+    "options": [
+      { "id": "a", "text": "Mehrere Strahlen pro Pixel senden und Ergebnis mitteln" },
+      { "id": "b", "text": "Höhere Auflösung rendern und runterskalieren" },
+      { "id": "c", "text": "Kanten nachträglich glätten" },
+      { "id": "d", "text": "Farben interpolieren" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "aa-3",
+    "category": "Anti-Aliasing & Rekursion",
+    "question": "Wie funktioniert ein perfekter Spiegel im Raytracing?",
+    "options": [
+      { "id": "a", "text": "Reflektierter Strahl wird rekursiv weiterverfolgt" },
+      { "id": "b", "text": "Umgebung wird kopiert" },
+      { "id": "c", "text": "Nachbarobjekte werden dupliziert" },
+      { "id": "d", "text": "Eine zweite Kamera wird platziert" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "aa-4",
+    "category": "Anti-Aliasing & Rekursion",
+    "question": "Was sind Sekundärstrahlen?",
+    "options": [
+      { "id": "a", "text": "Reflexions-, Refraktions- und Schattenstrahlen" },
+      { "id": "b", "text": "Strahlen von der zweiten Lichtquelle" },
+      { "id": "c", "text": "Strahlen beim zweiten Render-Durchgang" },
+      { "id": "d", "text": "Backup-Strahlen bei Fehlern" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "aa-5",
+    "category": "Anti-Aliasing & Rekursion",
+    "question": "Warum verwendet man Rekursion im Raytracer?",
+    "options": [
+      { "id": "a", "text": "Für Reflexionen und Refraktionen über mehrere Oberflächen" },
+      { "id": "b", "text": "Um Speicher zu sparen" },
+      { "id": "c", "text": "Um schneller zu rechnen" },
+      { "id": "d", "text": "Für die Szenenstruktur" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "aa-6",
+    "category": "Anti-Aliasing & Rekursion",
+    "question": "Wann benötigt man Anti-Aliasing?",
+    "options": [
+      { "id": "a", "text": "Bei Kanten, feinen Details und hohem Kontrast" },
+      { "id": "b", "text": "Immer, bei jedem Bild" },
+      { "id": "c", "text": "Nur bei Texturen" },
+      { "id": "d", "text": "Nur bei Transparenz" }
+    ],
+    "correctAnswer": "a"
+  }
+]

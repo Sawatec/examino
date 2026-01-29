@@ -1,0 +1,74 @@
+[
+  {
+    "id": "light-1",
+    "category": "Beleuchtung & Phong",
+    "question": "Was ist der Unterschied zwischen lokaler und globaler Beleuchtung?",
+    "options": [
+      { "id": "a", "text": "Lokal: direkte Beleuchtung; Global: mit indirektem Licht und Reflexionen" },
+      { "id": "b", "text": "Lokal: eine Lichtquelle; Global: mehrere Lichtquellen" },
+      { "id": "c", "text": "Lokal: für Objekte; Global: für die gesamte Szene" },
+      { "id": "d", "text": "Lokal: statisch; Global: dynamisch" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "light-2",
+    "category": "Beleuchtung & Phong",
+    "question": "Welche drei Terme hat das Phong-Beleuchtungsmodell?",
+    "options": [
+      { "id": "a", "text": "Ambient, Diffus, Spekular" },
+      { "id": "b", "text": "Reflexion, Refraktion, Absorption" },
+      { "id": "c", "text": "Direkt, Indirekt, Schatten" },
+      { "id": "d", "text": "Rot, Grün, Blau" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "light-3",
+    "category": "Beleuchtung & Phong",
+    "question": "Wovon hängt der diffuse Term im Phong-Modell ab?",
+    "options": [
+      { "id": "a", "text": "Vom Cosinus des Winkels zwischen Normale und Lichtrichtung" },
+      { "id": "b", "text": "Vom Abstand zur Lichtquelle" },
+      { "id": "c", "text": "Von der Farbe der Oberfläche" },
+      { "id": "d", "text": "Von der Kameraposition" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "light-4",
+    "category": "Beleuchtung & Phong",
+    "question": "Wie berechnet man Schatten im Raytracer?",
+    "options": [
+      { "id": "a", "text": "Schattenstrahl vom Punkt zur Lichtquelle senden und auf Hindernisse prüfen" },
+      { "id": "b", "text": "Normale invertieren" },
+      { "id": "c", "text": "Beleuchtung auf 0 setzen" },
+      { "id": "d", "text": "Ambient Term entfernen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "light-5",
+    "category": "Beleuchtung & Phong",
+    "question": "Was ist Shadow Acne und wie verhindert man es?",
+    "options": [
+      { "id": "a", "text": "Selbstverschattung durch Rundungsfehler; Epsilon-Offset verwenden" },
+      { "id": "b", "text": "Zu dunkle Schatten; Ambient erhöhen" },
+      { "id": "c", "text": "Mehrfache Schatten; nur eine Lichtquelle verwenden" },
+      { "id": "d", "text": "Unscharfe Schatten; Antialiasing aktivieren" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "light-6",
+    "category": "Beleuchtung & Phong",
+    "question": "Wie verhält sich eine Richtungslichtquelle (Directional Light)?",
+    "options": [
+      { "id": "a", "text": "Unendlich weit entfernt, parallele Strahlen, keine Abschwächung" },
+      { "id": "b", "text": "Position im Raum, Strahlen divergieren" },
+      { "id": "c", "text": "Kreisförmige Ausleuchtung" },
+      { "id": "d", "text": "Schwächt mit Entfernung ab" }
+    ],
+    "correctAnswer": "a"
+  }
+]

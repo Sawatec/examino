@@ -1,0 +1,1100 @@
+[
+  {
+    "id": "interface-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was ist der Zweck des Sampler-Interfaces in diesem Projekt?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es definiert eine Methode, um für jeden Punkt (x,y) eine Farbe zu berechnen"
+      },
+      {
+        "id": "b",
+        "text": "Es speichert Bilder im PNG-Format"
+      },
+      {
+        "id": "c",
+        "text": "Es verwaltet die Bildauflösung"
+      },
+      {
+        "id": "d",
+        "text": "Es erzeugt zufällige Pixelpositionen"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Das Sampler-Interface definiert die Methode getColor(Vec2 at), die für beliebige 2D-Koordinaten eine Farbe zurückgibt. Das ist das Kernkonzept der prozeduralen Bildgenerierung: Statt Pixel direkt zu zeichnen, definiert man eine Funktion, die jedem Punkt im Raum eine Farbe zuordnet. ColoredDiscs implementiert dieses Interface und berechnet für jeden Punkt, welche Scheibe (falls vorhanden) an dieser Stelle liegt und gibt deren Farbe zurück."
+  },
+  {
+    "id": "interface-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Klasse implementiert das Sampler-Interface?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Image"
+      },
+      {
+        "id": "b",
+        "text": "ColoredDiscs"
+      },
+      {
+        "id": "c",
+        "text": "DiscModel2D"
+      },
+      {
+        "id": "d",
+        "text": "ImageWriter"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "ColoredDiscs implementiert das Sampler-Interface und stellt die getColor-Methode zur Verfügung. Image ist nur der Container für Pixeldaten, DiscModel2D repräsentiert eine einzelne Scheibe, und ImageWriter ist für das Speichern zuständig. Nur ColoredDiscs hat die Logik, um zu bestimmen, welche Farbe an einem bestimmten Punkt sichtbar sein soll."
+  },
+  {
+    "id": "record-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was ist der Vorteil eines record gegenüber einer class in Java für DiscModel2D?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Getter-Methoden werden automatisch erstellt, unveränderliche Datenstruktur"
+      },
+      {
+        "id": "b",
+        "text": "Records sind schneller als Klassen"
+      },
+      {
+        "id": "c",
+        "text": "Records können keine Methoden haben"
+      },
+      {
+        "id": "d",
+        "text": "Records benötigen weniger Speicher"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Ein record in Java (ab Version 14) ist eine kompakte Schreibweise für unveränderliche Datenklassen. Für 'record DiscModel2D(Vec2 center, double radius, Color color)' generiert Java automatisch Getter-Methoden center(), radius(), color() sowie equals(), hashCode() und toString(). Alle Felder sind automatisch final. Das spart Boilerplate-Code und signalisiert klar, dass diese Klasse nur Daten halten soll, nicht aber komplexes Verhalten."
+  },
+  {
+    "id": "rgb-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Aussage zum RGB-Farbmodell ist korrekt?",
+    "options": [
+      {
+        "id": "a",
+        "text": "RGB ist ein subtraktives Farbmodell"
+      },
+      {
+        "id": "b",
+        "text": "RGB ist ein additives Farbmodell"
+      },
+      {
+        "id": "c",
+        "text": "RGB speichert Farben als Winkel und Radius"
+      },
+      {
+        "id": "d",
+        "text": "RGB speichert nur Helligkeitswerte"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "RGB ist ein additives Farbmodell, weil Licht unterschiedlicher Wellenlängen addiert wird. Wenn man rotes, grünes und blaues Licht überlagert, erhält man hellere Farben bis hin zu Weiß bei voller Intensität aller drei Kanäle. Das ist der Unterschied zu subtraktiven Modellen wie CMYK (Druckfarben), wo das Mischen dunkler wird. RGB wird für Displays und Monitore verwendet, wo Licht emittiert wird."
+  },
+  {
+    "id": "rgb-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Farbe entsteht bei additiver Mischung von Rot (1,0,0) und Grün (0,1,0)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Blau"
+      },
+      {
+        "id": "b",
+        "text": "Gelb"
+      },
+      {
+        "id": "c",
+        "text": "Cyan"
+      },
+      {
+        "id": "d",
+        "text": "Magenta"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Bei additiver Farbmischung überlagern sich die Lichtwellen. Rot + Grün = Gelb. Das sieht man an den Vektoren: (1,0,0) + (0,1,0) = (1,1,0). Ein Pixel mit maximaler rot- und grün-Intensität, aber ohne Blau, erscheint gelb. Weitere additive Primärfarben-Mischungen: Grün + Blau = Cyan, Rot + Blau = Magenta, Rot + Grün + Blau = Weiß."
+  },
+  {
+    "id": "rgb-3",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche RGB-Werte entsprechen Weiß bei Verwendung von double-Werten (0.0 bis 1.0)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(255, 255, 255)"
+      },
+      {
+        "id": "b",
+        "text": "(1, 1, 1)"
+      },
+      {
+        "id": "c",
+        "text": "(0, 0, 0)"
+      },
+      {
+        "id": "d",
+        "text": "(0.5, 0.5, 0.5)"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Bei Verwendung von double-Werten für RGB repräsentiert (1,1,1) Weiß, da alle Farbkanäle maximal sind. Der Wertebereich ist typischerweise [0.0, 1.0], wobei 0 = keine Intensität und 1 = maximale Intensität bedeutet. Manchmal wird auch [0, 255] für 8-Bit Integer verwendet, aber in der Computergrafik und bei Berechnungen ist [0.0, 1.0] der Standard, da es sich besser für mathematische Operationen eignet."
+  },
+  {
+    "id": "rgb-4",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche RGB-Werte entsprechen Schwarz bei Verwendung von double-Werten?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(1, 1, 1)"
+      },
+      {
+        "id": "b",
+        "text": "(255, 255, 255)"
+      },
+      {
+        "id": "c",
+        "text": "(0, 0, 0)"
+      },
+      {
+        "id": "d",
+        "text": "(0.1, 0.1, 0.1)"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Schwarz bedeutet das Fehlen von Licht, daher (0,0,0). Alle Farbkanäle sind auf 0, es wird kein rotes, grünes oder blaues Licht emittiert. Das ist das Gegenteil von Weiß (1,1,1), wo alle Kanäle maximal sind."
+  },
+  {
+    "id": "rgb-5",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Eine Farbe c=(0.2, 0.6, 1.0) wird mit dem Skalar 0.5 multipliziert. Was ist das Ergebnis?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(0.1, 0.3, 0.5)"
+      },
+      {
+        "id": "b",
+        "text": "(0.4, 1.2, 2.0)"
+      },
+      {
+        "id": "c",
+        "text": "(0.2, 0.6, 1.0)"
+      },
+      {
+        "id": "d",
+        "text": "(0.8, 0.4, 0.0)"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Skalarmultiplikation wird komponentenweise ausgeführt: (0.2, 0.6, 1.0) * 0.5 = (0.2*0.5, 0.6*0.5, 1.0*0.5) = (0.1, 0.3, 0.5). Dies ist wichtig für Helligkeitsanpassungen und Beleuchtungsberechnungen. Eine Multiplikation mit einem Wert < 1 macht die Farbe dunkler, ein Wert > 1 würde sie heller machen (wobei Werte dann geclampt werden müssen auf [0,1])."
+  },
+  {
+    "id": "rgb-6",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Rechnung beschreibt eine gewichtete Farbmischung korrekt?",
+    "options": [
+      {
+        "id": "a",
+        "text": "c1 + c2"
+      },
+      {
+        "id": "b",
+        "text": "c1 · w + c2 · w"
+      },
+      {
+        "id": "c",
+        "text": "c1 · w + c2 · (1 − w)"
+      },
+      {
+        "id": "d",
+        "text": "c1 · (1 − w) + c2 · (1 − w)"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Gewichtete Farbmischung (Linearkombination) wird als c1 · w + c2 · (1 − w) berechnet, wobei w ∈ [0,1]. Wenn w=0, erhält man c2; wenn w=1, erhält man c1. Bei w=0.5 bekommt man eine 50/50-Mischung. Die Gewichte müssen sich zu 1 addieren, damit das Ergebnis im gültigen Bereich bleibt. Dies ist die Grundlage für Interpolation, Alpha-Blending und viele andere Operationen in der Computergrafik."
+  },
+  {
+    "id": "rgb-7",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Farbe entsteht bei additiver Mischung von Blau (0,0,1) und Grün (0,1,0)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Gelb"
+      },
+      {
+        "id": "b",
+        "text": "Cyan"
+      },
+      {
+        "id": "c",
+        "text": "Magenta"
+      },
+      {
+        "id": "d",
+        "text": "Weiß"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Blau (0,0,1) + Grün (0,1,0) = Cyan (0,1,1). Cyan ist eine Sekundärfarbe im RGB-Modell. Es entsteht durch die Addition der beiden Primärfarben Grün und Blau. Cyan hat daher maximale Intensität in Grün und Blau, aber kein Rot."
+  },
+  {
+    "id": "array-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Ein Rasterbild hat Koordinaten (i,j). Wo liegt typischerweise (0,0)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Links oben"
+      },
+      {
+        "id": "b",
+        "text": "Links unten"
+      },
+      {
+        "id": "c",
+        "text": "Rechts oben"
+      },
+      {
+        "id": "d",
+        "text": "In der Mitte"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "In der Computergrafik liegt (0,0) typischerweise links oben. Die i-Koordinate (x) wächst nach rechts, die j-Koordinate (y) wächst nach unten. Das ist anders als in der Mathematik, wo der Ursprung oft unten links ist und y nach oben wächst. Für Bildverarbeitung ist die Konvention 'links oben' üblich, weil Dateiformate Pixel oft zeilenweise von oben nach unten speichern."
+  },
+  {
+    "id": "array-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "In welche Richtung wächst j (y) im Rasterbild typischerweise?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nach oben"
+      },
+      {
+        "id": "b",
+        "text": "Nach unten"
+      },
+      {
+        "id": "c",
+        "text": "Nach links"
+      },
+      {
+        "id": "d",
+        "text": "Nach rechts"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Im Rasterbild wächst j typischerweise nach unten. Das entspricht der Zeilenreihenfolge in Bilddateien und der Art, wie Text auf einer Seite gelesen wird: von oben nach unten. Bei mathematischen Koordinatensystemen würde y nach oben wachsen, aber in der Bildverarbeitung ist die Konvention umgekehrt."
+  },
+  {
+    "id": "array-3",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Warum werden Pixel häufig in einem eindimensionalen Array gespeichert?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2D-Arrays sind in Java nicht möglich"
+      },
+      {
+        "id": "b",
+        "text": "1D-Arrays sind oft effizienter und einfacher zu serialisieren"
+      },
+      {
+        "id": "c",
+        "text": "Damit Farben automatisch normalisiert werden"
+      },
+      {
+        "id": "d",
+        "text": "Damit man keine Indizes berechnen muss"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "1D-Arrays sind effizienter für viele Operationen: direkter Speicherzugriff, bessere Cache-Nutzung, einfachere Serialisierung und Kompatibilität mit Grafik-APIs. 2D-Arrays wären möglich (double[][]), aber man müsste erst für jede Zeile ein Array anlegen. Ein 1D-Array ist ein zusammenhängender Speicherblock, was Performance-Vorteile bringt. Die Berechnung des Index (j * width + i) ist schnell und einfach."
+  },
+  {
+    "id": "array-4",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Ein Bild hat M=10 Spalten. Welcher Index gehört zum Pixel (i=4, j=2) im 1D-Pixelarray (ohne RGB-Interleaving)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "14"
+      },
+      {
+        "id": "b",
+        "text": "24"
+      },
+      {
+        "id": "c",
+        "text": "42"
+      },
+      {
+        "id": "d",
+        "text": "20"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Für Pixel (i=4, j=2) ohne RGB-Interleaving: index = j * M + i = 2 * 10 + 4 = 24. Die Formel j * M + i wandelt 2D-Koordinaten in einen 1D-Index um. M ist die Anzahl der Spalten (width). Man springt j Zeilen nach unten (jede Zeile hat M Pixel) und dann i Pixel nach rechts. Beispiel: Bei 10 Spalten ist Pixel (4,2) an Position 24 im Array."
+  },
+  {
+    "id": "array-5",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was bedeutet pixel-interleaved RGB?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Alle roten Werte zuerst, dann grün, dann blau"
+      },
+      {
+        "id": "b",
+        "text": "R-, G- und B-Werte liegen direkt hintereinander pro Pixel"
+      },
+      {
+        "id": "c",
+        "text": "Jede Bildzeile speichert nur eine Farbkomponente"
+      },
+      {
+        "id": "d",
+        "text": "RGB wird als ein einziger Integer gespeichert"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Pixel-interleaved bedeutet, dass die R-, G- und B-Werte eines Pixels direkt hintereinander im Array liegen: [R0, G0, B0, R1, G1, B1, R2, G2, B2, ...]. Das Gegenteil wäre channel-interleaved (planar): erst alle R-Werte, dann alle G-Werte, dann alle B-Werte. Pixel-interleaved ist üblich, weil die Farbkanäle eines Pixels oft zusammen verarbeitet werden und so im Cache bleiben."
+  },
+  {
+    "id": "array-6",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Formel adressiert die grüne Komponente eines Pixels (i,j) bei pixel-interleaved RGB (C=3) korrekt?",
+    "options": [
+      {
+        "id": "a",
+        "text": "k = j · M + i"
+      },
+      {
+        "id": "b",
+        "text": "k = (j · M + i) + 1"
+      },
+      {
+        "id": "c",
+        "text": "k = 3 · (j · M + i) + 1"
+      },
+      {
+        "id": "d",
+        "text": "k = 3 · (i · M + j) + 1"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Bei pixel-interleaved RGB mit C=3 Kanälen liegt die grüne Komponente von Pixel (i,j) bei Index: k = 3 · (j · M + i) + 1. Zuerst berechnet man den Pixelindex (j · M + i), multipliziert mit 3 (da jedes Pixel 3 Werte hat), und addiert 1 für den G-Kanal (0=R, 1=G, 2=B). Beispiel: Pixel an Position 10 hat RGB bei Indizes 30, 31, 32."
+  },
+  {
+    "id": "array-7",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Ein RGB-Bild hat width=4 und height=3 und nutzt double. Wie groß ist das Datenarray für pixel-interleaved RGB?",
+    "options": [
+      {
+        "id": "a",
+        "text": "12"
+      },
+      {
+        "id": "b",
+        "text": "24"
+      },
+      {
+        "id": "c",
+        "text": "36"
+      },
+      {
+        "id": "d",
+        "text": "48"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "width=4, height=3, RGB mit double: Anzahl Pixel = 4 * 3 = 12. Jedes Pixel braucht 3 Werte (R,G,B). Gesamt: 12 * 3 = 36 double-Werte. Das Array muss groß genug sein für alle Farbwerte aller Pixel. Bei width * height * 3 hat man genau die richtige Größe für pixel-interleaved RGB."
+  },
+  {
+    "id": "code-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was bewirkt der folgende Codeausschnitt?",
+    "code": "for (int i = 0; i != width; i++) {\n  for (int j = 0; j != height; j++) {\n    image.setPixel(i, j, obj.getColor(new Vec2(i, j)));\n  }\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Er erzeugt zufällige Farben für jedes Pixel"
+      },
+      {
+        "id": "b",
+        "text": "Er berechnet für jedes Pixel (i,j) eine Farbe und schreibt sie ins Bild"
+      },
+      {
+        "id": "c",
+        "text": "Er speichert das Bild als PNG-Datei"
+      },
+      {
+        "id": "d",
+        "text": "Er berechnet nur die Pixel der Diagonale"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Die verschachtelte Schleife iteriert über alle Pixel (i,j) des Bildes. Für jedes Pixel wird obj.getColor(new Vec2(i, j)) aufgerufen, um die Farbe an dieser Position zu berechnen. Diese Farbe wird dann mit setPixel ins Image geschrieben. So entsteht das Bild: Man tastet jeden Punkt ab (Sampling) und fragt das Sampler-Objekt nach der Farbe."
+  },
+  {
+    "id": "getpixel-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was macht die getPixel-Methode?",
+    "code": "public Color getPixel(int i, int j) {\n  int index = getIndex(i, j);\n  int rIndex = index;\n  int gIndex = index + 1;\n  int bIndex = index + 2;\n  Color colorOfPixel = new Color(this.data[rIndex], this.data[gIndex], this.data[bIndex]);\n  return colorOfPixel;\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sie liest die RGB-Werte aus dem Datenarray und gibt sie als Color-Objekt zurück"
+      },
+      {
+        "id": "b",
+        "text": "Sie schreibt RGB-Werte ins Datenarray"
+      },
+      {
+        "id": "c",
+        "text": "Sie berechnet den Index eines Pixels"
+      },
+      {
+        "id": "d",
+        "text": "Sie konvertiert RGB zu HSV"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "getPixel liest einen Farbwert aus: Zuerst wird der Index im Datenarray berechnet (wo liegen die RGB-Werte für Pixel (i,j)?), dann werden die drei aufeinanderfolgenden Werte (R, G, B) aus dem Array gelesen und als Color-Objekt zurückgegeben. Das ist das Gegenstück zu setPixel und wird z.B. für Bildverarbeitung oder das Auslesen von Pixelwerten benötigt."
+  },
+  {
+    "id": "arraysize-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Warum wird das data-Array mit der Größe `width * height * 3` initialisiert?",
+    "code": "this.data = new double[width * height * 3];",
+    "options": [
+      {
+        "id": "a",
+        "text": "width * height Pixel, jedes mit 3 Farbkanälen (R, G, B)"
+      },
+      {
+        "id": "b",
+        "text": "Für 3 verschiedene Bilder"
+      },
+      {
+        "id": "c",
+        "text": "Für Triple-Buffering"
+      },
+      {
+        "id": "d",
+        "text": "Für Alpha-Transparenz zusätzlich"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "width * height ergibt die Gesamtzahl der Pixel. Jedes Pixel hat 3 Farbkanäle (R, G, B), daher: width * height * 3 Einträge im Array. Bei einem 640x480 Bild sind das 640 * 480 * 3 = 921.600 double-Werte. Würde man nur width * height verwenden, hätte man zu wenig Platz und würde ArrayIndexOutOfBoundsException bekommen."
+  },
+  {
+    "id": "code-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was ist die Folge, wenn man in der Schleife versehentlich `i <= width` statt `i != width` schreibt?",
+    "code": "for (int i = 0; i <= width; i++) {\n  for (int j = 0; j != height; j++) {\n    image.setPixel(i, j, obj.getColor(new Vec2(i, j)));\n  }\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es werden weniger Pixel berechnet"
+      },
+      {
+        "id": "b",
+        "text": "Es wird genau das gleiche Ergebnis erzeugt"
+      },
+      {
+        "id": "c",
+        "text": "Es kann zu einem ArrayIndexOutOfBoundsException kommen"
+      },
+      {
+        "id": "d",
+        "text": "Das Bild wird gespiegelt"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Mit i <= width läuft die Schleife von 0 bis width (einschließlich), also width+1 Iterationen. Da das Array aber nur Indizes 0 bis width-1 hat, führt der Zugriff auf Pixel (width, j) zu einem ArrayIndexOutOfBoundsException. Korrekt ist i < width oder i != width (bei Start mit 0). Der Unterschied zwischen < und != ist hier nur stilistisch, aber != macht explizit, dass man genau bis width-1 geht."
+  },
+  {
+    "id": "code-3",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Zeile fehlt, damit das PNG tatsächlich geschrieben wird?",
+    "code": "var image = new Image(width, height);\nfor (int i = 0; i != width; i++) {\n  for (int j = 0; j != height; j++) {\n    image.setPixel(i, j, obj.getColor(new Vec2(i, j)));\n  }\n}\n// ???",
+    "options": [
+      {
+        "id": "a",
+        "text": "image = null;"
+      },
+      {
+        "id": "b",
+        "text": "image.writePNG(\"a01-discs\");"
+      },
+      {
+        "id": "c",
+        "text": "obj.writePNG(\"a01-discs\");"
+      },
+      {
+        "id": "d",
+        "text": "System.out.println(image);"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Nach dem Füllen des Bildes muss image.writePNG(\"a01-discs\") aufgerufen werden, um das Bild tatsächlich als PNG-Datei zu speichern. Ohne diesen Aufruf existiert das Bild nur im Speicher und geht beim Programmende verloren. writePNG verwendet intern ImageWriter, um das double-Array in ein PNG-Format zu konvertieren und auf die Festplatte zu schreiben."
+  },
+  {
+    "id": "image-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was ist das Ergebnis der Indexberechnung in deiner Image-Klasse? Wofür steht der Faktor `* 3`?",
+    "code": "private int getIndex(int i, int j) {\n  return (this.width * j + i) * 3;\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Für 3 Bilder (Triple Buffering)"
+      },
+      {
+        "id": "b",
+        "text": "Für 3 Farbkanäle pro Pixel (R,G,B)"
+      },
+      {
+        "id": "c",
+        "text": "Für 3 Zeilen pro Pixel"
+      },
+      {
+        "id": "d",
+        "text": "Für 3 Bytes pro double"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Der Faktor * 3 ist nötig, weil jedes Pixel 3 Farbwerte (R, G, B) im Array belegt. Ohne * 3 würde man nur den Pixelindex berechnen, nicht den Arrayindex. Mit * 3 springt man für jedes Pixel um 3 Positionen weiter. Beispiel: Pixel 0 hat RGB bei 0,1,2; Pixel 1 hat RGB bei 3,4,5; Pixel 2 bei 6,7,8 usw."
+  },
+  {
+    "id": "image-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welcher Fehler entsteht sehr wahrscheinlich, wenn man das Datenarray zu klein anlegt?",
+    "code": "this.data = new double[width * height];\n\n// und später so schreibt:\n\ndata[index] = color.r();\ndata[index + 1] = color.g();\ndata[index + 2] = color.b();",
+    "options": [
+      {
+        "id": "a",
+        "text": "Das Bild wird nur grau"
+      },
+      {
+        "id": "b",
+        "text": "Die Farben werden invertiert"
+      },
+      {
+        "id": "c",
+        "text": "Es kann zu einem ArrayIndexOutOfBoundsException kommen"
+      },
+      {
+        "id": "d",
+        "text": "Es wird automatisch auf 3 Kanäle erweitert"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Wenn das Array nur width * height groß ist statt width * height * 3, dann passt nur für jedes Pixel ein Wert rein. Beim Schreiben von data[index + 1] und data[index + 2] greift man aber auf Positionen zu, die über die Arraygröße hinausgehen. Resultat: ArrayIndexOutOfBoundsException. Es ist ein häufiger Fehler, das * 3 zu vergessen."
+  },
+  {
+    "id": "image-3",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Aussage beschreibt korrekt, was `setPixel` macht?",
+    "code": "public void setPixel(int i, int j, Color color) {\n  int index = getIndex(i, j);\n  data[index] = color.r();\n  data[index + 1] = color.g();\n  data[index + 2] = color.b();\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Es schreibt den Farbwert für Pixel (i,j) als R,G,B ins Datenarray"
+      },
+      {
+        "id": "b",
+        "text": "Es liest den Farbwert aus dem Datenarray"
+      },
+      {
+        "id": "c",
+        "text": "Es sortiert die Pixel nach Helligkeit"
+      },
+      {
+        "id": "d",
+        "text": "Es zeichnet eine Linie zwischen Pixeln"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "setPixel schreibt einen Farbwert ins Datenarray. Für Pixel (i,j) wird zuerst der Startindex berechnet, dann werden die drei Farbkomponenten (R, G, B) an die Positionen index, index+1, index+2 geschrieben. So wird das Color-Objekt in das interleaved Array-Format übersetzt. Später kann man mit getPixel diese Werte wieder auslesen."
+  },
+  {
+    "id": "image-4",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Zeile implementiert in deiner Lösung das Schreiben der PNG-Datei korrekt?",
+    "code": "public void writePNG(String name) {\n  // ???\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "ImageWriter.writePNG(name, data, width, height);"
+      },
+      {
+        "id": "b",
+        "text": "Image.writePNG(name, data);"
+      },
+      {
+        "id": "c",
+        "text": "ImageWriter.writePNG(name, width, height);"
+      },
+      {
+        "id": "d",
+        "text": "writePNG(name);"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "ImageWriter.writePNG(name, data, width, height) ist die korrekte Signatur. Man übergibt den Dateinamen, das Datenarray mit den Pixeln und die Bildabmessungen. ImageWriter ist eine Utility-Klasse, die das double-Array in ein PNG-Format konvertiert (z.B. Normierung auf [0,255], Gamma-Korrektur) und die Datei schreibt. Image delegiert diese Aufgabe an ImageWriter."
+  },
+  {
+    "id": "sampling-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was bedeutet Abtastung eines Bildes in diesem Kontext am treffendsten?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Man berechnet eine Farbe für diskrete Pixelpositionen"
+      },
+      {
+        "id": "b",
+        "text": "Man zeichnet den Kreis über Winkelparameter"
+      },
+      {
+        "id": "c",
+        "text": "Man komprimiert das Bild"
+      },
+      {
+        "id": "d",
+        "text": "Man wandelt ein Rasterbild in Vektoren um"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Abtastung (Sampling) bedeutet hier, dass man für diskrete Pixelpositionen (ganzzahlige i, j) Farbwerte berechnet. Man tastet die kontinuierliche Szene (die durch getColor definiert ist) an diskreten Punkten ab und speichert die Ergebnisse als Rasterbild. Das ist die Brücke zwischen der abstrakten Szenenbeschreibung und dem konkreten Pixel-Array."
+  },
+  {
+    "id": "circle-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Bedingung prüft, ob ein Punkt `pos` innerhalb einer Kreisscheibe liegt (inkl. Rand)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "distance(pos, center) < radius"
+      },
+      {
+        "id": "b",
+        "text": "distance(pos, center) <= radius"
+      },
+      {
+        "id": "c",
+        "text": "distance(pos, center) >= radius"
+      },
+      {
+        "id": "d",
+        "text": "pos == center"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "distance(pos, center) <= radius ist die Bedingung für 'Punkt liegt in oder auf dem Kreisrand'. Das <= inkludiert den Rand. Mit < würde der Rand selbst nicht dazugehören. Die Formel kommt aus der Geometrie: Ein Kreis ist die Menge aller Punkte mit Abstand ≤ radius vom Mittelpunkt. Der Abstand wird über die euklidische Distanz berechnet: sqrt((pos.x - center.x)² + (pos.y - center.y)²)."
+  },
+  {
+    "id": "circle-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was bewirkt die Methode in deinem DiscModel2D?",
+    "code": "public boolean coversPoint(Vec2 pos) {\n  return Vec2.length(Vec2.subtract(pos, center)) <= radius;\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sie liefert true, wenn pos innerhalb oder auf dem Rand der Scheibe liegt"
+      },
+      {
+        "id": "b",
+        "text": "Sie liefert true, wenn pos außerhalb der Scheibe liegt"
+      },
+      {
+        "id": "c",
+        "text": "Sie gibt die Farbe der Scheibe zurück"
+      },
+      {
+        "id": "d",
+        "text": "Sie verschiebt den Mittelpunkt der Scheibe"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "coversPoint berechnet den Abstand zwischen pos und center und vergleicht ihn mit radius. Vec2.subtract(pos, center) gibt den Differenzvektor, Vec2.length berechnet dessen Länge (euklidische Distanz). Wenn diese Distanz ≤ radius ist, liegt der Punkt innerhalb oder auf der Scheibe und die Methode gibt true zurück. Das ist die Kern-Geometrie-Logik für Kreisscheiben."
+  },
+  {
+    "id": "circle-3",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Folge hätte diese Änderung in coversPoint?",
+    "code": "return Vec2.length(Vec2.subtract(pos, center)) < radius;",
+    "options": [
+      {
+        "id": "a",
+        "text": "Punkte genau auf dem Rand zählen nicht mehr als 'drin'"
+      },
+      {
+        "id": "b",
+        "text": "Punkte außerhalb zählen plötzlich als 'drin'"
+      },
+      {
+        "id": "c",
+        "text": "Der Radius wird verdoppelt"
+      },
+      {
+        "id": "d",
+        "text": "Es ändert sich nichts"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Mit < statt <= würden Punkte genau auf dem Rand (Abstand == radius) als 'nicht drin' gelten. Das würde zu einem dünnen Rand um die Scheibe führen, der nicht gefärbt wird. Je nach Anwendungsfall kann das gewollt oder ungewollt sein. In der Praxis ist <= üblicher, weil man normalerweise den Rand zur Scheibe zählen möchte."
+  },
+  {
+    "id": "discs-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was ist die Hintergrundfarbe in deiner `getColor`-Methode, wenn keine Scheibe getroffen wird?",
+    "code": "public Color getColor(Vec2 at) {\n  Color color = Color.black;\n  double radius = Double.POSITIVE_INFINITY;\n  for (DiscModel2D disc : discs) {\n    if (disc.coversPoint(at)) {\n      double r = disc.radius();\n      if (r < radius) {\n        radius = r;\n        color = disc.color();\n      }\n    }\n  }\n  return color;\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Weiß"
+      },
+      {
+        "id": "b",
+        "text": "Schwarz"
+      },
+      {
+        "id": "c",
+        "text": "Transparent"
+      },
+      {
+        "id": "d",
+        "text": "Zufällig"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "color wird mit Color.black initialisiert. Wenn keine Scheibe den Punkt abdeckt, bleibt diese Farbe erhalten und wird zurückgegeben. So bekommt der Hintergrund (alle Bereiche ohne Scheiben) die Farbe Schwarz. Man könnte auch eine andere Hintergrundfarbe wählen, z.B. Weiß oder eine benutzerdefinierte Farbe."
+  },
+  {
+    "id": "discs-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Scheibe 'gewinnt' bei Überlappung in deiner Lösung?",
+    "code": "if (disc.coversPoint(at)) {\n  double r = disc.radius();\n  if (r < radius) {\n    radius = r;\n    color = disc.color();\n  }\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Immer die größte Scheibe"
+      },
+      {
+        "id": "b",
+        "text": "Immer die kleinste Scheibe"
+      },
+      {
+        "id": "c",
+        "text": "Immer die erste Scheibe in der Liste"
+      },
+      {
+        "id": "d",
+        "text": "Immer die zuletzt erzeugte Scheibe"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Die Bedingung r < radius sorgt dafür, dass immer die kleinste Scheibe gewinnt. Bei Überlappungen werden alle überdeckenden Scheiben geprüft, aber nur die mit dem kleinsten Radius wird ausgewählt. Das erzeugt einen visuellen Effekt, wo kleinere Scheiben 'vorne' liegen. Ohne diese Logik würde die Reihenfolge im Array entscheiden, was weniger vorhersehbar wäre."
+  },
+  {
+    "id": "discs-3",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was ist der Zweck dieser Initialisierung?",
+    "code": "double radius = Double.POSITIVE_INFINITY;",
+    "options": [
+      {
+        "id": "a",
+        "text": "Damit beim ersten Treffer jede Scheibe kleiner ist und übernommen werden kann"
+      },
+      {
+        "id": "b",
+        "text": "Damit nie eine Scheibe ausgewählt wird"
+      },
+      {
+        "id": "c",
+        "text": "Damit nur Scheiben mit Radius 0 gewählt werden"
+      },
+      {
+        "id": "d",
+        "text": "Damit der Code schneller läuft durch weniger Vergleiche"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Double.POSITIVE_INFINITY stellt sicher, dass die erste gefundene Scheibe immer kleiner als radius ist und somit übernommen wird. Bei jedem weiteren Treffer wird geprüft, ob die neue Scheibe noch kleiner ist. Es ist ein gängiges Idiom, um das Minimum zu finden: Man startet mit dem größtmöglichen Wert und aktualisiert bei jedem kleineren Fund."
+  },
+  {
+    "id": "discs-4",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was bewirkt der folgende Code im Konstruktor von ColoredDiscs?",
+    "code": "double radius = minRadius + RandomUtil.random() * (maxRadius - minRadius);",
+    "options": [
+      {
+        "id": "a",
+        "text": "radius ist gleichmäßig zufällig im Intervall [minRadius, maxRadius)"
+      },
+      {
+        "id": "b",
+        "text": "radius ist immer minRadius"
+      },
+      {
+        "id": "c",
+        "text": "radius ist immer maxRadius"
+      },
+      {
+        "id": "d",
+        "text": "radius ist nur 0 oder 1"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "minRadius + RandomUtil.random() * (maxRadius - minRadius) erzeugt eine Zufallszahl im Intervall [minRadius, maxRadius). RandomUtil.random() liefert einen Wert in [0, 1), der mit der Differenz (maxRadius - minRadius) skaliert und dann um minRadius verschoben wird. So können Scheiben unterschiedlich groß sein, bleiben aber im vorgegebenen Bereich."
+  },
+  {
+    "id": "discs-5",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Warum wird der Mittelpunkt so berechnet?",
+    "code": "double centerRangeX = width - 2.0 * radius;\ndouble centerX = radius + RandomUtil.random() * centerRangeX;",
+    "options": [
+      {
+        "id": "a",
+        "text": "Damit der Mittelpunkt nie negativ wird"
+      },
+      {
+        "id": "b",
+        "text": "Damit die Scheibe vollständig im Bild liegt (nicht über den Rand hinaus)"
+      },
+      {
+        "id": "c",
+        "text": "Damit alle Scheiben im Zentrum liegen"
+      },
+      {
+        "id": "d",
+        "text": "Damit die Scheibe immer maximal groß wird"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "Die Formel stellt sicher, dass der gesamte Kreis (Mittelpunkt + Radius) im Bild liegt. centerRangeX = width - 2.0 * radius ist der verfügbare Bereich für den Mittelpunkt in x-Richtung, abzüglich des Platzes links und rechts für den Radius. centerX = radius + ... positioniert den Mittelpunkt mindestens radius Pixel vom linken Rand entfernt. So kann keine Scheibe über den Bildrand hinausragen."
+  },
+  {
+    "id": "bug-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "In deiner Image-Klasse wird der Index so berechnet. Was ist die wahrscheinlichste Folge, wenn man `* 3` weglässt, aber `setPixel` unverändert lässt?",
+    "code": "return (this.width * j + i) * 3;",
+    "options": [
+      {
+        "id": "a",
+        "text": "Das Bild wird nur etwas dunkler"
+      },
+      {
+        "id": "b",
+        "text": "Die Farben werden korrekt, aber gespiegelt"
+      },
+      {
+        "id": "c",
+        "text": "RGB-Werte überschreiben sich gegenseitig, Bild wird kaputt"
+      },
+      {
+        "id": "d",
+        "text": "Es wird automatisch kompensiert"
+      }
+    ],
+    "correctAnswer": "c",
+    "explanation": "Ohne * 3 würden alle Pixel nur 1/3 des benötigten Platzes haben. setPixel würde dann oft außerhalb des Arrays schreiben (ArrayIndexOutOfBoundsException) oder Farbwerte überschreiben sich gegenseitig. Die Struktur bricht komplett zusammen, weil die Zuordnung Pixel → Array-Position falsch ist. Das Bild wird unleserlich oder das Programm stürzt ab."
+  },
+  {
+    "id": "constructor-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Parameter erwartet der Konstruktor von ColoredDiscs?",
+    "code": "public ColoredDiscs(int discCount, double minRadius, double maxRadius, int width, int height)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Anzahl, min/max Radius, Bildbreite, Bildhöhe"
+      },
+      {
+        "id": "b",
+        "text": "Nur Anzahl der Scheiben"
+      },
+      {
+        "id": "c",
+        "text": "Farbe und Position jeder Scheibe"
+      },
+      {
+        "id": "d",
+        "text": "Ein Array von DiscModel2D-Objekten"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Der Konstruktor benötigt alle Parameter, um die Scheiben zu generieren: discCount (wie viele?), minRadius/maxRadius (Größenbereich), width/height (Bildgröße für Positionierung). Mit diesen Infos kann ColoredDiscs im Konstruktor eine ArrayList von DiscModel2D-Objekten aufbauen, jeweils mit zufälliger Größe, Position und Farbe innerhalb der gegebenen Grenzen."
+  },
+  {
+    "id": "constructor-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Warum machen die Parameter width und height für den ColoredDiscs-Konstruktor Sinn?",
+    "code": "public ColoredDiscs(int discCount, double minRadius, double maxRadius, int width, int height)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Um die Auflösung der Bildschirmdarstellung festzulegen"
+      },
+      {
+        "id": "b",
+        "text": "Um sicherzustellen, dass die Scheibenmittelpunkte so positioniert werden, dass die Scheiben vollständig im Bildbereich liegen"
+      },
+      {
+        "id": "c",
+        "text": "Um die Größe der Scheiben automatisch anzupassen"
+      },
+      {
+        "id": "d",
+        "text": "Um die Farben der Scheiben zu berechnen"
+      }
+    ],
+    "correctAnswer": "b",
+    "explanation": "width und height definieren den Bildbereich, innerhalb dessen die Scheiben liegen müssen. Ohne diese Parameter könnte der Konstruktor die Mittelpunkte nicht korrekt berechnen. Die Formel centerRangeX = width - 2.0 * radius verwendet width, um sicherzustellen, dass keine Scheibe über den Rand hinausragt. Ohne width/height wären die Scheiben unkontrolliert im Raum verteilt."
+  },
+  {
+    "id": "arraylist-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Warum wird ArrayList statt einem Array für die Scheiben verwendet?",
+    "code": "private final ArrayList<DiscModel2D> discs;",
+    "options": [
+      {
+        "id": "a",
+        "text": "ArrayList ist flexibler und bietet Methoden wie add()"
+      },
+      {
+        "id": "b",
+        "text": "Arrays können keine Objekte speichern"
+      },
+      {
+        "id": "c",
+        "text": "ArrayList ist schneller als Array"
+      },
+      {
+        "id": "d",
+        "text": "ArrayList benötigt weniger Speicher"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "ArrayList<DiscModel2D> ist flexibler als ein Array (DiscModel2D[]): Man kann mit add() einfach Elemente anhängen, ohne die Größe vorher festzulegen. ArrayList bietet auch Methoden wie size(), isEmpty(), iterator() usw. Für Collections ist ArrayList oft die bessere Wahl. Ein Array wäre hier möglich, aber man müsste zuerst new DiscModel2D[discCount] initialisieren und dann manuell füllen."
+  },
+  {
+    "id": "vec2-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was macht Vec2.subtract(pos, center)?",
+    "code": "Vec2.subtract(pos, center)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Berechnet den Vektor von center nach pos (Differenzvektor)"
+      },
+      {
+        "id": "b",
+        "text": "Addiert zwei Vektoren"
+      },
+      {
+        "id": "c",
+        "text": "Multipliziert zwei Vektoren"
+      },
+      {
+        "id": "d",
+        "text": "Berechnet den Mittelpunkt zwischen pos und center"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Vec2.subtract(pos, center) berechnet den Vektor von center nach pos: pos - center. Das ist der Differenzvektor, der die Richtung und Distanz zwischen den beiden Punkten repräsentiert. In der Vektorrechnung ist die Subtraktion definiert als komponentenweise Differenz: (pos.x - center.x, pos.y - center.y). Dieser Vektor wird dann verwendet, um die Distanz zu berechnen."
+  },
+  {
+    "id": "vec2-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was macht Vec2.length(vector)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Berechnet die Länge/Betrag des Vektors (Euklidische Distanz)"
+      },
+      {
+        "id": "b",
+        "text": "Zählt die Anzahl der Komponenten"
+      },
+      {
+        "id": "c",
+        "text": "Normiert den Vektor auf Länge 1"
+      },
+      {
+        "id": "d",
+        "text": "Gibt die x-Komponente zurück"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Vec2.length(vector) berechnet die euklidische Länge (Betrag) des Vektors: sqrt(x² + y²). Das ist die Formel für die Distanz vom Ursprung. Bei einem Differenzvektor gibt length die Distanz zwischen den beiden ursprünglichen Punkten zurück. In coversPoint wird das verwendet, um zu prüfen, ob der Abstand ≤ radius ist."
+  },
+  {
+    "id": "final-1",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Was bedeutet das Schlüsselwort `final` bei Attributen?",
+    "code": "private final int width;",
+    "options": [
+      {
+        "id": "a",
+        "text": "Der Wert kann nach der Initialisierung nicht mehr geändert werden (immutable)"
+      },
+      {
+        "id": "b",
+        "text": "Die Variable ist öffentlich zugänglich"
+      },
+      {
+        "id": "c",
+        "text": "Die Variable wird automatisch mit 0 initialisiert"
+      },
+      {
+        "id": "d",
+        "text": "Die Variable ist statisch"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "final bedeutet, dass der Wert nach der Initialisierung (z.B. im Konstruktor) nicht mehr geändert werden kann. Das macht die Variable immutable. Für width und height ist das sinnvoll, weil die Bildgröße nach der Erstellung nicht mehr verändert werden soll. Es verhindert Fehler und signalisiert dem Compiler und anderen Entwicklern die Unveränderlichkeit."
+  },
+  {
+    "id": "final-2",
+    "category": "Rasterbilder, Kreisscheiben und Codeframework",
+    "question": "Welche Änderung würde in `getColor` dazu führen, dass bei Überlappung die größte Scheibe gewinnt?",
+    "code": "if (r < radius) {\n  radius = r;\n  color = disc.color();\n}",
+    "options": [
+      {
+        "id": "a",
+        "text": "Vergleich ändern zu `if (r > radius)` und radius initial auf 0 setzen"
+      },
+      {
+        "id": "b",
+        "text": "radius initial auf POSITIVE_INFINITY lassen und Vergleich zu `if (r > radius)` ändern"
+      },
+      {
+        "id": "c",
+        "text": "Vergleich zu `if (r == radius)` ändern"
+      },
+      {
+        "id": "d",
+        "text": "Keine Änderung nötig"
+      }
+    ],
+    "correctAnswer": "a",
+    "explanation": "Um die größte Scheibe gewinnen zu lassen, muss man r > radius prüfen und radius initial auf 0 setzen. Dann wird nur eine Scheibe übernommen, wenn sie größer als alle bisherigen ist. Mit POSITIVE_INFINITY und > würde die Bedingung nie erfüllt sein (keine Scheibe ist größer als Unendlich). Die Initialisierung muss zum Vergleich passen: Für 'kleinste suchen' → start mit INFINITY und <; für 'größte suchen' → start mit 0 und >."
+  }
+]

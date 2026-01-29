@@ -1,0 +1,75 @@
+[
+  {
+    "id": "scene-1",
+    "category": "Hierarchische Szenen",
+    "question": "Was ist der Hauptzweck des Kompositum-Musters im Raytracer?",
+    "options": [
+      { "id": "a", "text": "Hierarchische Gruppierung von Objekten als Baum" },
+      { "id": "b", "text": "Mehrfachvererbung ermöglichen" },
+      { "id": "c", "text": "Speicherverbrauch reduzieren" },
+      { "id": "d", "text": "Parallele Berechnung ermöglichen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "scene-2",
+    "category": "Hierarchische Szenen",
+    "question": "Welche der folgenden Klassen setzt das Kompositum-Muster korrekt um?",
+    "code": "class A { Shape[] children; }\nclass B { A[] children; }\nclass C { Object[] children; }",
+    "options": [
+      { "id": "a", "text": "Klasse A - enthält Array vom Interface-Typ" },
+      { "id": "b", "text": "Klasse B - enthält Array vom konkreten Typ" },
+      { "id": "c", "text": "Klasse C - enthält Array vom generischen Typ" },
+      { "id": "d", "text": "Alle Klassen setzen es um" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "scene-3",
+    "category": "Hierarchische Szenen",
+    "question": "Wie funktioniert die intersect()-Methode im GroupShape?",
+    "options": [
+      { "id": "a", "text": "Rekursiv über alle Kinder iterieren und nächsten Treffer finden" },
+      { "id": "b", "text": "Alle Kinder parallel berechnen" },
+      { "id": "c", "text": "Nur das erste Kind testen" },
+      { "id": "d", "text": "Bounding Box zuerst prüfen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "scene-4",
+    "category": "Hierarchische Szenen",
+    "question": "Was ist Laufzeit-Polymorphie?",
+    "options": [
+      { "id": "a", "text": "Methodenaufruf wird zur Laufzeit basierend auf Objekttyp aufgelöst" },
+      { "id": "b", "text": "Variable können verschiedene Typen speichern" },
+      { "id": "c", "text": "Methoden können überladen werden" },
+      { "id": "d", "text": "Objekte ändern zur Laufzeit ihren Typ" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "scene-5",
+    "category": "Hierarchische Szenen",
+    "question": "Wie groß ist das Skalarprodukt zwischen Normale und Strahl bei einer Ebene im rechten Winkel?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "-1" },
+      { "id": "d", "text": "90" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "scene-6",
+    "category": "Hierarchische Szenen",
+    "question": "Wozu dient ein Interface im Kontext des Raytracers?",
+    "options": [
+      { "id": "a", "text": "Gemeinsame Schnittstelle für verschiedene Shape-Typen definieren" },
+      { "id": "b", "text": "Code-Duplikation vermeiden" },
+      { "id": "c", "text": "Performance verbessern" },
+      { "id": "d", "text": "Mehrfachvererbung ermöglichen" }
+    ],
+    "correctAnswer": "a"
+  }
+]

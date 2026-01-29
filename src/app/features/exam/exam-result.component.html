@@ -1,0 +1,343 @@
+<div class="result-container">
+  @if (result(); as res) {
+    <div class="result-layout">
+      <!-- Main Content - Klausurergebnis -->
+      <div class="result-main">
+        <div class="result-card">
+          <!-- Header mit Score -->
+          <div class="result-header">
+            <h1>{{ isPassed ? '🎉 ' : '📚 ' }}Ergebnis</h1>
+            
+            <div class="score-summary">
+              <div class="score-circle" [class.passed]="isPassed">
+                <span class="percentage">{{ res.score }}%</span>
+                <span class="pass-indicator">{{ isPassed ? '✓ Bestanden' : '✗ Durchgefallen' }}</span>
+              </div>
+              <div class="score-details">
+                <p class="score-text">
+                  <strong>{{ res.correctAnswers }}</strong> von <strong>{{ res.totalQuestions }}</strong> richtig
+                </p>
+                <p class="error-count" *ngIf="wrongAnswersCount > 0">
+                  {{ wrongAnswersCount }} {{ wrongAnswersCount === 1 ? 'Fehler' : 'Fehler' }}
+                </p>
+                <p class="time-text">
+                  ⏱️ Zeit: {{ formatTime(res.timeUsed) }}
+                </p>
+              </div>
+            </div>
+            
+            <div class="motivational-message" [class.passed]="isPassed">
+              {{ motivationalMessage }}
+            </div>
+          </div>
+
+          <!-- Kategorie-Statistiken (ausklappbar) -->
+          @if (categoryStats.length > 1) {
+            <div class="collapsible-section">
+              <button class="section-toggle" (click)="toggleCategoryStats()">
+                <span class="toggle-icon">{{ showCategoryStats() ? '▼' : '▶' }}</span>
+                <span class="toggle-title">📊 Statistiken nach Kategorie</span>
+                <span class="toggle-badge">{{ categoryStats.length }} Kategorien</span>
+              </button>
+              
+              @if (showCategoryStats()) {
+                <div class="section-content">
+                  <div class="category-stats-list">
+                    @for (stat of categoryStats; track stat.category) {
+                      <div class="category-stat-item">
+                        <div class="category-stat-header">
+                          <span class="category-stat-name">{{ stat.category }}</span>
+                          <span class="category-stat-score" 
+                                [class.good]="stat.percentage >= 70" 
+                                [class.medium]="stat.percentage >= 50 && stat.percentage < 70" 
+                                [class.bad]="stat.percentage < 50">
+                            {{ stat.correct }}/{{ stat.total }} ({{ stat.percentage }}%)
+                          </span>
+                        </div>
+                        <div class="category-progress-bar">
+                          <div class="category-progress-fill" 
+                               [style.width.%]="stat.percentage" 
+                               [class.good]="stat.percentage >= 70" 
+                               [class.medium]="stat.percentage >= 50 && stat.percentage < 70" 
+                               [class.bad]="stat.percentage < 50">
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
+
+          <!-- Fragenübersicht mit Details -->
+          <div class="questions-section">
+            <h2>📝 Fragenübersicht</h2>
+            <div class="filter-buttons">
+              <button class="filter-btn" (click)="jumpToNextWrong()">
+                ⏭️ Nächster Fehler
+              </button>
+            </div>
+            <div class="questions-grid">
+              @for (question of res.questions; track question.id; let i = $index) {
+                <button 
+                  class="question-nav-item"
+                  [class.correct]="isCorrect(question)"
+                  [class.incorrect]="!isCorrect(question)"
+                  [class.selected]="selectedQuestionIndex() === i"
+                  (click)="selectQuestion(i)"
+                >
+                  <span class="question-number">{{ i + 1 }}</span>
+                  <span class="status-icon">{{ isCorrect(question) ? '✓' : '✗' }}</span>
+                </button>
+              }
+            </div>
+
+            <!-- Detailansicht der ausgewählten Frage -->
+            @if (selectedQuestion; as q) {
+              <div class="question-detail">
+                <div class="detail-header">
+                  <h3>Frage {{ selectedQuestionIndex() + 1 }} von {{ res.totalQuestions }}</h3>
+                  <span class="detail-status" [class.correct]="isCorrect(q)" [class.incorrect]="!isCorrect(q)">
+                    {{ isCorrect(q) ? '✓ Richtig' : '✗ Falsch' }}
+                  </span>
+                </div>
+
+                <div class="detail-category">
+                  <strong>Kategorie:</strong> {{ q.category }}
+                </div>
+
+                <p class="detail-question">{{ q.question }}</p>
+                
+                @if (q.code) {
+                  <pre class="code-block"><code>{{ q.code }}</code></pre>
+                }
+
+                <div class="detail-answers">
+                  <h4>Antwortoptionen</h4>
+                  @for (option of q.options; track option.id) {
+                    <div 
+                      class="answer-option"
+                      [class.user-selected]="option.id === q.userAnswer"
+                      [class.correct-answer]="option.id === q.correctAnswer"
+                      [class.wrong-answer]="option.id === q.userAnswer && option.id !== q.correctAnswer"
+                    >
+                      <span class="option-id">{{ option.id }}.</span>
+                      <span class="option-text">{{ option.text }}</span>
+                      @if (option.id === q.correctAnswer) {
+                        <span class="badge correct-badge">✓ Richtig</span>
+                      }
+                      @if (option.id === q.userAnswer && option.id !== q.correctAnswer) {
+                        <span class="badge wrong-badge">Deine Antwort</span>
+                      }
+                    </div>
+                  }
+                </div>
+                
+                @if (q.explanation) {
+                  <div class="explanation-section">
+                    <button 
+                      class="explanation-toggle"
+                      (click)="toggleExplanation(selectedQuestionIndex())"
+                    >
+                      <span class="toggle-icon">{{ isExplanationExpanded(selectedQuestionIndex()) ? '▼' : '▶' }}</span>
+                      <span class="toggle-text">💡 Erklärung anzeigen</span>
+                    </button>
+                    
+                    @if (isExplanationExpanded(selectedQuestionIndex())) {
+                      <div class="explanation-content">
+                        <div class="explanation-header">
+                          <span class="explanation-icon">💡</span>
+                          <strong>Warum ist das die richtige Antwort?</strong>
+                        </div>
+                        <p class="explanation-text">{{ q.explanation }}</p>
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Actions -->
+          <div class="actions">
+            <button class="retry-button" (click)="retryExam()">
+              🔄 Nochmal versuchen
+            </button>
+            <button class="back-button" (click)="backToStart()">
+              ← Zurück zum Start
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar - Gamification -->
+      <div class="gamification-sidebar">
+        <h2 class="sidebar-title">🏆 Fortschritt</h2>
+
+        <!-- XP und Level -->
+        <div class="level-section">
+          <div class="level-info">
+            <div class="level-badge">
+              <span class="level-icon">⭐</span>
+              <span class="level-number">Level {{ userLevel }}</span>
+            </div>
+            @if (xpGained() > 0) {
+              <div class="xp-gained">+{{ xpGained() }} XP</div>
+            }
+          </div>
+          <div class="xp-progress">
+            <div class="xp-progress-bar">
+              <div class="xp-progress-fill" [style.width.%]="progressToNextLevel"></div>
+            </div>
+            <span class="xp-text">{{ userStats().experiencePoints }} / {{ xpForNextLevel }} XP</span>
+          </div>
+        </div>
+
+        <!-- Neu freigeschaltete Achievements -->
+        @if (newlyUnlockedAchievements().length > 0) {
+          <div class="achievements-section newly-unlocked">
+            <h3>🎉 Neu freigeschaltet!</h3>
+            <div class="achievements-list">
+              @for (achievement of newlyUnlockedAchievements(); track achievement.id) {
+                <div class="achievement-card earned new-unlock">
+                  <span class="achievement-icon">{{ achievement.icon }}</span>
+                  <div class="achievement-info">
+                    <strong>{{ achievement.title }}</strong>
+                    <span class="achievement-desc">{{ achievement.description }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Dieser Test Achievements -->
+        @if (earnedCurrentTestAchievements.length > 0) {
+          <div class="achievements-section">
+            <h3>🎯 In diesem Test</h3>
+            <div class="achievements-list">
+              @for (achievement of earnedCurrentTestAchievements; track achievement.title) {
+                <div class="achievement-card earned">
+                  <span class="achievement-icon">{{ achievement.icon }}</span>
+                  <div class="achievement-info">
+                    <strong>{{ achievement.title }}</strong>
+                    <span class="achievement-desc">{{ achievement.description }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Gesamtstatistiken -->
+        <div class="overall-stats-section">
+          <h3>📊 Statistiken</h3>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-icon">📝</span>
+              <div class="stat-info">
+                <span class="stat-value">{{ userStats().totalTests }}</span>
+                <span class="stat-label">Tests</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">🎯</span>
+              <div class="stat-info">
+                <span class="stat-value">{{ userStats().bestScore }}%</span>
+                <span class="stat-label">Beste</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">📊</span>
+              <div class="stat-info">
+                <span class="stat-value">{{ userStats().averageScore }}%</span>
+                <span class="stat-label">Ø Score</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">🔥</span>
+              <div class="stat-info">
+                <span class="stat-value">{{ userStats().currentStreak }}</span>
+                <span class="stat-label">Streak</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fortschritt (In Arbeit) -->
+        @if (achievementProgress.length > 0) {
+          <div class="progress-section">
+            <h3>📈 In Arbeit</h3>
+            <div class="progress-list">
+              @for (progress of achievementProgress.slice(0, 3); track progress.achievement.id) {
+                <div class="progress-item">
+                  <div class="progress-header">
+                    <span class="progress-icon">{{ progress.achievement.icon }}</span>
+                    <span class="progress-name">{{ progress.achievement.title }}</span>
+                  </div>
+                  <div class="progress-desc">{{ progress.achievement.description }}</div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" [style.width.%]="progress.percentage">
+                      <span class="progress-percentage">{{ progress.percentage }}%</span>
+                    </div>
+                  </div>
+                  <span class="progress-numbers">{{ progress.progressText }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Alle Achievements (ausklappbar) -->
+        <div class="collapsible-section">
+          <button class="section-toggle" (click)="toggleAllAchievements()">
+            <span class="toggle-icon">{{ showAllAchievements() ? '▼' : '▶' }}</span>
+            <span class="toggle-title">🏅 Alle Erfolge</span>
+            <span class="toggle-badge">{{ earnedAchievements.length }}/{{ allAchievements().length }}</span>
+          </button>
+          
+          @if (showAllAchievements()) {
+            <div class="section-content">
+              @if (earnedAchievements.length > 0) {
+                <h4>✅ Freigeschaltet ({{ earnedAchievements.length }})</h4>
+                <div class="achievements-list">
+                  @for (achievement of earnedAchievements; track achievement.id) {
+                    <div class="achievement-card earned compact">
+                      <span class="achievement-icon">{{ achievement.icon }}</span>
+                      <div class="achievement-info">
+                        <strong>{{ achievement.title }}</strong>
+                        <span class="achievement-desc">{{ achievement.description }}</span>
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
+
+              @if (lockedAchievements.length > 0) {
+                <button class="subsection-toggle" (click)="toggleLockedAchievements()">
+                  <span class="toggle-icon">{{ showLockedAchievements() ? '▼' : '▶' }}</span>
+                  <span>🔒 Noch nicht freigeschaltet ({{ lockedAchievements.length }})</span>
+                </button>
+                
+                @if (showLockedAchievements()) {
+                  <div class="achievements-list">
+                    @for (achievement of lockedAchievements; track achievement.id) {
+                      <div class="achievement-card locked compact">
+                        <span class="achievement-icon locked-icon">🔒</span>
+                        <div class="achievement-info">
+                          <strong>{{ achievement.title }}</strong>
+                          <span class="achievement-desc">{{ achievement.description }}</span>
+                        </div>
+                      </div>
+                    }
+                  </div>
+                }
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "path-1",
+    "category": "Transformationspfade",
+    "question": "Was ist ein Koordinatensystem im Kontext des Szenengraphen?",
+    "options": [
+      { "id": "a", "text": "Ein Bezugssystem definiert durch Origin und drei Achsen" },
+      { "id": "b", "text": "Die Position eines Objekts" },
+      { "id": "c", "text": "Eine Transformation Matrix" },
+      { "id": "d", "text": "Der Wurzelknoten des Graphen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "path-2",
+    "category": "Transformationspfade",
+    "question": "Was ist die Model Matrix?",
+    "options": [
+      { "id": "a", "text": "Transformation vom Objekt-Koordinatensystem ins Welt-Koordinatensystem" },
+      { "id": "b", "text": "Transformation von Welt zu Kamera" },
+      { "id": "c", "text": "Die Projektionsmatrix" },
+      { "id": "d", "text": "Die inverse View Matrix" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "path-3",
+    "category": "Transformationspfade",
+    "question": "Was ist die View Matrix?",
+    "options": [
+      { "id": "a", "text": "Transformation vom Welt- ins Kamera-Koordinatensystem" },
+      { "id": "b", "text": "Transformation vom Objekt zur Welt" },
+      { "id": "c", "text": "Die Kamera Position" },
+      { "id": "d", "text": "Die Projektionsmatrix" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "path-4",
+    "category": "Transformationspfade",
+    "question": "Wie berechnet man die Model Matrix für ein Shape im Szenengraphen?",
+    "options": [
+      { "id": "a", "text": "Alle Transformationen vom Wurzelknoten bis zum Shape multiplizieren" },
+      { "id": "b", "text": "Nur die direkte Parent-Transformation verwenden" },
+      { "id": "c", "text": "Die Inverse der View Matrix" },
+      { "id": "d", "text": "Position minus Kamera Position" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "path-5",
+    "category": "Transformationspfade",
+    "question": "Was sind die drei kanonischen Koordinatensysteme?",
+    "options": [
+      { "id": "a", "text": "Welt, Kamera, Objekt" },
+      { "id": "b", "text": "X, Y, Z" },
+      { "id": "c", "text": "Lokal, Global, Screen" },
+      { "id": "d", "text": "Model, View, Projection" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "path-6",
+    "category": "Transformationspfade",
+    "question": "Wie funktioniert das Transformieren im GroupShape?",
+    "options": [
+      { "id": "a", "text": "Strahl wird invers transformiert, dann Kinder getestet" },
+      { "id": "b", "text": "Alle Kinder werden transformiert" },
+      { "id": "c", "text": "Nur der Schnittpunkt wird transformiert" },
+      { "id": "d", "text": "Die Transformation wird gespeichert und später angewendet" }
+    ],
+    "correctAnswer": "a"
+  }
+]

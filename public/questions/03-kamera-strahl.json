@@ -1,0 +1,74 @@
+[
+  {
+    "id": "cam-1",
+    "category": "Kamera & Strahlerzeugung",
+    "question": "Wie wird ein Strahl in parametrischer Form dargestellt?",
+    "options": [
+      { "id": "a", "text": "r(t) = origin + t * direction" },
+      { "id": "b", "text": "r(t) = direction * origin + t" },
+      { "id": "c", "text": "r(t) = origin - t * direction" },
+      { "id": "d", "text": "r(t) = t + origin * direction" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "cam-2",
+    "category": "Kamera & Strahlerzeugung",
+    "question": "Was ist der Unterschied zwischen einer realen und virtuellen Lochkamera?",
+    "options": [
+      { "id": "a", "text": "Virtuelle Kamera hat keine Größenbeschränkungen und perfekte Optik" },
+      { "id": "b", "text": "Reale Kamera verwendet digitale Sensoren" },
+      { "id": "c", "text": "Virtuelle Kamera kann keine Schatten berechnen" },
+      { "id": "d", "text": "Reale Kamera hat kein Koordinatensystem" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "cam-3",
+    "category": "Kamera & Strahlerzeugung",
+    "question": "Welche Vektoren definieren ein Kamera-Koordinatensystem?",
+    "options": [
+      { "id": "a", "text": "View direction, up vector, right vector" },
+      { "id": "b", "text": "X-Achse, Y-Achse, Z-Achse" },
+      { "id": "c", "text": "Origin, target, rotation" },
+      { "id": "d", "text": "Position, scale, orientation" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "cam-4",
+    "category": "Kamera & Strahlerzeugung",
+    "question": "Was muss bei der Berechnung eines Strahls aus Pixelkoordinaten beachtet werden?",
+    "options": [
+      { "id": "a", "text": "Transformation von Bildschirm- zu Welt-Koordinaten" },
+      { "id": "b", "text": "Die Pixelgröße muss konstant sein" },
+      { "id": "c", "text": "Der Strahl muss normiert sein" },
+      { "id": "d", "text": "Die Kamera muss am Ursprung liegen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "cam-5",
+    "category": "Kamera & Strahlerzeugung",
+    "question": "Wie viele Lösungen kann die Schnittpunktberechnung Strahl-Kugel haben?",
+    "options": [
+      { "id": "a", "text": "0 (kein Treffer), 1 (Tangente) oder 2 (Durchdringung)" },
+      { "id": "b", "text": "Immer genau 1" },
+      { "id": "c", "text": "0 oder unendlich viele" },
+      { "id": "d", "text": "Maximal 1" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "cam-6",
+    "category": "Kamera & Strahlerzeugung",
+    "question": "Was ist ein Normalenvektor und wozu wird er benötigt?",
+    "options": [
+      { "id": "a", "text": "Vektor senkrecht zur Oberfläche, für Beleuchtungsberechnungen" },
+      { "id": "b", "text": "Einheitsvektor in Richtung der Kamera" },
+      { "id": "c", "text": "Vektor parallel zur Oberfläche" },
+      { "id": "d", "text": "Durchschnittlicher Vektor aller Oberflächenpunkte" }
+    ],
+    "correctAnswer": "a"
+  }
+]

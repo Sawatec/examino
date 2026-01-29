@@ -1,0 +1,164 @@
+<div class="page mesh-gradient">
+  <div class="container">
+    <!-- Header -->
+    <header class="hero">
+      <h1 class="hero-title">
+        <span class="text-gradient-primary">Klausur</span><span class="hero-title-rest">vorbereitung</span>
+      </h1>
+      <p class="hero-subtitle">Bereite dich optimal auf deine Prüfung vor</p>
+    </header>
+
+    <div class="layout">
+      <!-- Left Column -->
+      <aside class="left">
+        <!-- Level Card -->
+        <section class="card-glass card p-6">
+          <div class="level-row">
+            <div class="level-avatar">👤</div>
+            <div class="level-meta">
+              <div class="muted tiny">Dein Level</div>
+              <div class="level-line">
+                <span class="star">⭐</span>
+                <span class="level-value">Level {{ userLevel }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="xp">
+            <div class="xp-top">
+              <span class="xp-now">{{ userStats().experiencePoints }} XP</span>
+              <span class="xp-next"> {{ xpToNextLevel }} XP bis Level {{ userLevel + 1 }}</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill-primary" [style.width.%]="progressToNextLevel"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats Grid -->
+        <section class="stats-grid">
+          <div class="card-glass p-4 stat">
+            <div class="stat-value">{{ userStats().bestScore }}%</div>
+            <div class="stat-label">Beste</div>
+          </div>
+          <div class="card-glass p-4 stat">
+            <div class="stat-value">{{ userStats().totalTests }}</div>
+            <div class="stat-label">Tests</div>
+          </div>
+          <div class="card-glass p-4 stat">
+            <div class="stat-value">{{ earnedAchievements.length }}/{{ allAchievements().length }}</div>
+            <div class="stat-label">Erfolge</div>
+          </div>
+          <div class="card-glass p-4 stat">
+            <div class="stat-value">{{ userStats().currentStreak }}</div>
+            <div class="stat-label">Streak</div>
+          </div>
+        </section>
+
+        <!-- Next Achievements -->
+        @if (nextAchievementsToUnlock.length > 0) {
+          <section class="card-glass card p-6">
+            <div class="card-title">🏅 Nächste Erfolge</div>
+            <div class="list">
+              @for (achievement of nextAchievementsToUnlock; track achievement.id) {
+                <div class="row-soft">
+                  <div class="row-ico">{{ achievement.icon }}</div>
+                  <div class="row-text">
+                    <div class="row-main">{{ achievement.title }}</div>
+                    <div class="row-sub">{{ achievement.description }}</div>
+                  </div>
+                </div>
+              }
+            </div>
+          </section>
+        }
+      </aside>
+
+      <!-- Right Column -->
+      <main class="right">
+        <!-- Quick Stats -->
+        <section class="card-glass p-6 quick">
+          <div class="quick-item">
+            <div class="quick-val text-primary">{{ totalQuestions }}</div>
+            <div class="quick-lbl">Fragen</div>
+          </div>
+          <div class="quick-item quick-middle">
+            <div class="quick-val">{{ estimatedMinutes }} Min</div>
+            <div class="quick-lbl">Zeit</div>
+          </div>
+          <div class="quick-item">
+            <div class="quick-val text-success">{{ selectedCount }}/{{ categories().length }}</div>
+            <div class="quick-lbl">Themen</div>
+          </div>
+        </section>
+
+        <!-- Test Mode -->
+        <section class="block">
+          <div class="block-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap w-5 h-5 text-primary"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg> Testmodus wählen</div>
+
+          <div class="modes">
+            <button class="mode card-glass" [class.active]="selectedDuration() === 'short'" (click)="selectDuration('short')" type="button">
+              <div class="mode-icon">⚡</div>
+              <div class="mode-title">Sprint</div>
+              <div class="mode-sub">{{ durations.short.minutes }} Min · {{ durations.short.totalQuestions }} Fragen</div>
+            </button>
+
+            <button class="mode card-glass" [class.active]="selectedDuration() === 'medium'" (click)="selectDuration('medium')" type="button">
+              <div class="mode-icon">🎯</div>
+              <div class="mode-title">Standard</div>
+              <div class="mode-sub">{{ durations.medium.minutes }} Min · {{ durations.medium.totalQuestions }} Fragen</div>
+            </button>
+
+            <button class="mode card-glass" [class.active]="selectedDuration() === 'long'" (click)="selectDuration('long')" type="button">
+              <div class="mode-icon">🏆</div>
+              <div class="mode-title">Marathon</div>
+              <div class="mode-sub">{{ durations.long.minutes }} Min · {{ durations.long.totalQuestions }} Fragen</div>
+            </button>
+          </div>
+        </section>
+
+        <!-- Topics -->
+        <section class="block">
+          <div class="block-head">
+            <div class="block-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open w-5 h-5 text-primary"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg> Themengebiete</div>
+            <button class="link" type="button" (click)="toggleAll()">
+              {{ selectedCount === categories().length ? 'Keine auswählen' : 'Alle auswählen' }}
+            </button>
+          </div>
+
+          <div class="topics">
+            @for (category of categories(); track category.name) {
+              <label class="topic card-glass" [class.active]="category.selected">
+                <input
+                  class="topic-check"
+                  type="checkbox"
+                  [checked]="category.selected"
+                  (change)="toggleCategory(category.name)"
+                />
+
+                <div class="topic-left">
+                  <span class="topic-ico" aria-hidden="true">{{ getCategoryIcon(category.name) }}</span>
+                  <span class="topic-name">{{ category.name }}</span>
+                </div>
+
+                <span class="topic-right">~{{ questionsPerCategory }} Fragen</span>
+              </label>
+            }
+          </div>
+        </section>
+
+        <p class="hint">
+          Wähle Testlänge und Themengebiete aus. Die {{ totalQuestions }} Fragen werden gleichmäßig auf deine
+          ausgewählten Themen verteilt.
+        </p>
+
+        <button class="btn-primary start" (click)="startExam()" [disabled]="selectedCount === 0 || isLoading()" type="button">
+          <span class="start-inner">
+            ↗
+            {{ isLoading() ? 'Wird geladen...' : 'Test starten (' + totalQuestions + ' Fragen)' }}
+          </span>
+        </button>
+      </main>
+    </div>
+  </div>
+</div>

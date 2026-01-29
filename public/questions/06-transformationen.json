@@ -1,0 +1,74 @@
+[
+  {
+    "id": "trans-1",
+    "category": "Transformationen",
+    "question": "Wozu verwendet man homogene Koordinaten?",
+    "options": [
+      { "id": "a", "text": "Um Translation als Matrix-Multiplikation darstellen zu können" },
+      { "id": "b", "text": "Um Vektoren zu normieren" },
+      { "id": "c", "text": "Um Speicher zu sparen" },
+      { "id": "d", "text": "Um Farbwerte zu speichern" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "trans-2",
+    "category": "Transformationen",
+    "question": "Wie werden Punkte vs. Richtungen in homogenen Koordinaten repräsentiert?",
+    "options": [
+      { "id": "a", "text": "Punkt: (x, y, z, 1); Richtung: (x, y, z, 0)" },
+      { "id": "b", "text": "Punkt: (x, y, z, 0); Richtung: (x, y, z, 1)" },
+      { "id": "c", "text": "Beide: (x, y, z, 1)" },
+      { "id": "d", "text": "Beide: (x, y, z, 0)" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "trans-3",
+    "category": "Transformationen",
+    "question": "Was bewirkt eine Einheitsmatrix?",
+    "options": [
+      { "id": "a", "text": "Keine Veränderung (Identität)" },
+      { "id": "b", "text": "Skalierung auf Größe 1" },
+      { "id": "c", "text": "Rotation um 0 Grad" },
+      { "id": "d", "text": "Translation zum Ursprung" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "trans-4",
+    "category": "Transformationen",
+    "question": "In welcher Reihenfolge werden Transformationen angewendet wenn man eine Matrix-Kette M1 * M2 * M3 * v hat?",
+    "options": [
+      { "id": "a", "text": "Von rechts nach links: erst M3, dann M2, dann M1" },
+      { "id": "b", "text": "Von links nach rechts: erst M1, dann M2, dann M3" },
+      { "id": "c", "text": "Parallel alle gleichzeitig" },
+      { "id": "d", "text": "In beliebiger Reihenfolge" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "trans-5",
+    "category": "Transformationen",
+    "question": "Was beschreibt die Rechte-Hand-Regel bei Rotationen?",
+    "options": [
+      { "id": "a", "text": "Daumen zeigt Rotationsachse, Finger zeigen Rotationsrichtung" },
+      { "id": "b", "text": "Die Koordinatenachsen im Raum" },
+      { "id": "c", "text": "Die Reihenfolge der Transformationen" },
+      { "id": "d", "text": "Die Richtung des Normalenvektors" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "trans-6",
+    "category": "Transformationen",
+    "question": "Wie transformiert man einen Kamerastrahl mit einer Matrix?",
+    "options": [
+      { "id": "a", "text": "Origin als Punkt und Direction als Richtung transformieren" },
+      { "id": "b", "text": "Nur die Direction transformieren" },
+      { "id": "c", "text": "Nur den Origin transformieren" },
+      { "id": "d", "text": "Beide als Punkte transformieren" }
+    ],
+    "correctAnswer": "a"
+  }
+]

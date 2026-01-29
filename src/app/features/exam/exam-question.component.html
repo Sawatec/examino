@@ -1,0 +1,123 @@
+<div class="quiz-page mesh-gradient">
+  @if (currentQuestion(); as q) {
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div>
+        <div class="top-title">Klausur Beispielfragen</div>
+
+        <div class="top-progress">
+          <div class="progress-track w-full">
+            <div
+              class="progress-fill-primary"
+              [style.width.%]="((currentQuestionIndex() + 1) / totalQuestions()) * 100"
+            ></div>
+          </div>
+          <div class="top-count">{{ currentQuestionIndex() + 1 }}/{{ totalQuestions() }}</div>
+        </div>
+      </div>
+
+      <div class="top-right">
+        <div class="timer-pill" [class.warning]="timeRemaining() <= 60">
+          🕒 {{ formatTime(timeRemaining()) }}
+        </div>
+
+        <button class="icon-btn" type="button" (click)="toggleMark()" title="Markieren">
+          🏳️
+        </button>
+      </div>
+    </header>
+
+    <div class="quiz-layout">
+      <!-- Main -->
+      <main class="quiz-main">
+        <div class="question-head">
+          <div class="q-kicker">Frage {{ currentQuestionIndex() + 1 }}</div>
+
+          <button class="card-glass mark-btn" type="button" (click)="toggleMark()">
+            <span class="mark-ico">🏳️</span>
+            <span class="mark-txt">Markieren</span>
+            <span class="mark-state" [class.on]="q.isMarked">
+              {{ q.isMarked ? 'AN' : 'AUS' }}
+            </span>
+          </button>
+        </div>
+
+        <div class="q-title">{{ q.question }}</div>
+
+        @if (q.code) {
+          <pre class="code-block"><code>{{ q.code }}</code></pre>
+        }
+
+        <div class="options">
+          @for (opt of q.options; track opt.id) {
+            <label
+              class="card-glass opt"
+              [class.selected]="q.userAnswer === opt.id"
+              (click)="selectAnswer(opt.id)"
+            >
+              <input class="opt-radio" type="radio" [checked]="q.userAnswer === opt.id" />
+              <span class="opt-badge">{{ opt.id | uppercase }}</span>
+              <span class="opt-text">{{ opt.text }}</span>
+            </label>
+          }
+        </div>
+
+        <div class="nav-row">
+          <button
+            class="nav-btn ghost"
+            type="button"
+            (click)="previousQuestion()"
+            [disabled]="currentQuestionIndex() === 0"
+          >
+            ← Zurück
+          </button>
+
+          <button class="nav-btn primary" type="button" (click)="nextQuestion()">
+            Weiter →
+          </button>
+        </div>
+      </main>
+
+      <!-- Right Sidebar -->
+      <aside class="quiz-side">
+        <div class="card-glass side-card">
+          <div class="side-title">Navigation</div>
+
+          <div class="grid">
+            @for (qq of allQuestions(); track qq.id; let i = $index) {
+              <button
+                class="dot-btn"
+                type="button"
+                (click)="goToQuestion(i)"
+                [class.active]="currentQuestionIndex() === i"
+                [class.answered]="isAnswered(i)"
+                [class.marked]="qq.isMarked"
+              >
+                {{ i + 1 }}
+              </button>
+            }
+          </div>
+
+          <div class="legend">
+            <div class="legend-row">
+              <span class="l l-answered"></span>
+              <span>Beantwortet</span>
+            </div>
+            <div class="legend-row">
+              <span class="l l-marked"></span>
+              <span>Markiert</span>
+            </div>
+            <div class="legend-row">
+              <span class="l l-open"></span>
+              <span>Offen</span>
+            </div>
+          </div>
+
+          <button class="btn-accent finish" type="button" (click)="showFinishConfirm()">
+            Test abschließen
+          </button>
+        </div>
+      </aside>
+    </div>
+  }
+</div>

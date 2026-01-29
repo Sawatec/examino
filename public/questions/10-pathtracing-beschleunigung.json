@@ -1,0 +1,74 @@
+[
+  {
+    "id": "pt-1",
+    "category": "Path Tracing & Beschleunigung",
+    "question": "Was kann lokale Beleuchtung NICHT darstellen?",
+    "options": [
+      { "id": "a", "text": "Indirektes Licht, Color Bleeding, weiche Schatten" },
+      { "id": "b", "text": "Direkte Beleuchtung" },
+      { "id": "c", "text": "Spiegelungen" },
+      { "id": "d", "text": "Diffuse Oberflächen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "pt-2",
+    "category": "Path Tracing & Beschleunigung",
+    "question": "Was ist die Monte-Carlo Methode?",
+    "options": [
+      { "id": "a", "text": "Approximation durch zufällige Stichproben" },
+      { "id": "b", "text": "Exakte mathematische Lösung" },
+      { "id": "c", "text": "Iterative Verfeinerung" },
+      { "id": "d", "text": "Parallele Berechnung" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "pt-3",
+    "category": "Path Tracing & Beschleunigung",
+    "question": "Welchen Einfluss hat die Rekursionstiefe beim Path Tracing?",
+    "options": [
+      { "id": "a", "text": "Tiefe 0: nur direkt; größere Tiefe: mehr indirekte Beleuchtung" },
+      { "id": "b", "text": "Nur Performance, kein visueller Unterschied" },
+      { "id": "c", "text": "Bestimmt die Auflösung" },
+      { "id": "d", "text": "Kontrolliert die Anzahl der Lichtquellen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "pt-4",
+    "category": "Path Tracing & Beschleunigung",
+    "question": "Was ist ein Bounding Volume (Hüllkörper)?",
+    "options": [
+      { "id": "a", "text": "Einfaches Volumen das Objekt umschließt für schnelle Tests" },
+      { "id": "b", "text": "Die äußere Schale eines Objekts" },
+      { "id": "c", "text": "Ein transparentes Objekt" },
+      { "id": "d", "text": "Der Szenengraph" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "pt-5",
+    "category": "Path Tracing & Beschleunigung",
+    "question": "Wie berechnet man den Hüllkörper für ein GroupShape?",
+    "options": [
+      { "id": "a", "text": "Bounding Boxes aller Kinder vereinigen" },
+      { "id": "b", "text": "Durchschnitt aller Kinder nehmen" },
+      { "id": "c", "text": "Größte Bounding Box wählen" },
+      { "id": "d", "text": "Manuelle Definition erforderlich" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "pt-6",
+    "category": "Path Tracing & Beschleunigung",
+    "question": "Was ist die Zeitkomplexität mit Bounding Volume Hierarchie?",
+    "options": [
+      { "id": "a", "text": "O(log n) statt O(n)" },
+      { "id": "b", "text": "O(1) statt O(n)" },
+      { "id": "c", "text": "O(n²) statt O(n)" },
+      { "id": "d", "text": "Bleibt O(n)" }
+    ],
+    "correctAnswer": "a"
+  }
+]

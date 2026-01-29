@@ -1,0 +1,74 @@
+[
+  {
+    "id": "tex-1",
+    "category": "Texturen",
+    "question": "Was ist eine Textur im Kontext von Computergrafik?",
+    "options": [
+      { "id": "a", "text": "Daten die Oberflächeneigenschaften beschreiben (Farbe, Normale, etc.)" },
+      { "id": "b", "text": "Ein Bild das auf eine Oberfläche geklebt wird" },
+      { "id": "c", "text": "Die Rauheit einer Oberfläche" },
+      { "id": "d", "text": "Ein 3D-Modell" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "tex-2",
+    "category": "Texturen",
+    "question": "Was sind Texturkoordinaten?",
+    "options": [
+      { "id": "a", "text": "2D-Koordinaten (u,v) die 3D-Punkte auf Textur abbilden" },
+      { "id": "b", "text": "Die Position der Textur im Raum" },
+      { "id": "c", "text": "RGB-Werte der Textur" },
+      { "id": "d", "text": "Die Auflösung der Textur" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "tex-3",
+    "category": "Texturen",
+    "question": "Was ist der Parameterraum bei Texturen?",
+    "options": [
+      { "id": "a", "text": "2D-Koordinatensystem (meist u,v von 0 bis 1)" },
+      { "id": "b", "text": "Der 3D-Objektraum" },
+      { "id": "c", "text": "Die Pixelkoordinaten der Textur" },
+      { "id": "d", "text": "Der Weltkoordinatenraum" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "tex-4",
+    "category": "Texturen",
+    "question": "Was ist die Besonderheit bei Texturen an Polen einer Kugel?",
+    "options": [
+      { "id": "a", "text": "Singularität: alle u-Werte treffen sich am Pol" },
+      { "id": "b", "text": "Die Textur wird gespiegelt" },
+      { "id": "c", "text": "Die Farbe ist immer weiß" },
+      { "id": "d", "text": "Texturkoordinaten sind undefined" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "tex-5",
+    "category": "Texturen",
+    "question": "Was ist der Unterschied zwischen prozeduralen und Bild-Texturen?",
+    "options": [
+      { "id": "a", "text": "Prozedural: mathematisch berechnet; Bild: aus Bilddatei gelesen" },
+      { "id": "b", "text": "Prozedural: schneller; Bild: langsamer" },
+      { "id": "c", "text": "Prozedural: 2D; Bild: 3D" },
+      { "id": "d", "text": "Prozedural: für Farben; Bild: für Normalen" }
+    ],
+    "correctAnswer": "a"
+  },
+  {
+    "id": "tex-6",
+    "category": "Texturen",
+    "question": "Was ist Bump Mapping?",
+    "options": [
+      { "id": "a", "text": "Normalenvektoren werden durch Textur modifiziert für Detail-Illusion" },
+      { "id": "b", "text": "Geometrie wird tatsächlich verformt" },
+      { "id": "c", "text": "Farbe wird auf Oberfläche gemappt" },
+      { "id": "d", "text": "Schatten werden vorberechnet" }
+    ],
+    "correctAnswer": "a"
+  }
+]
